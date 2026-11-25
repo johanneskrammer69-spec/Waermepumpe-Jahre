@@ -5,9 +5,9 @@ const FILES=[
   BASE+'index.html',
   BASE+'app.js',
   BASE+'manifest.webmanifest',
-  BASE+'icons/icon-192.png',
-  BASE+'icons/icon-512.png',
-  BASE+'icons/icon-maskable-512.png'
+  BASE+'icon-192.png',
+  BASE+'icon-512.png',
+  BASE+'icon-maskable-512.png'
 ];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>self.skipWaiting()));
