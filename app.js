@@ -58,4 +58,4 @@ $('file').onchange=async ev=>{const f=ev.target.files[0];if(!f)return;try{const 
 function download(content,name,type){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([content],{type}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 async function refresh(){records=Object.fromEntries((await allRecords()).map(x=>[x.date,x]));draw()}
 (async()=>{try{if(!('indexedDB'in window))throw Error('IndexedDB nicht verfügbar');db=await openDB();await refresh();clearForm()}catch(e){$('feedback').textContent='Speicher konnte nicht geöffnet werden: '+e.message}})();
-if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('/Waermepumpe-Jahre/sw.js',{scope:'/Waermepumpe-Jahre/'}).catch(()=>{}));
